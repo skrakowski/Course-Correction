@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://j4bckuvmye8b"]
+
+[ext_resource type="PackedScene" uid="uid://8evjkx7qf0nw" path="res://Player/player.tscn" id="1_m5rj2"]
+
+[sub_resource type="TileSet" id="TileSet_po5wc"]
+
+[node name="World" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1151.0
+offset_bottom = 649.0
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_m5rj2")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_po5wc")
+format = 2
