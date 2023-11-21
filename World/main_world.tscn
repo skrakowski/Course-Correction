@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://j4bckuvmye8b"]
+[gd_scene load_steps=5 format=3 uid="uid://j4bckuvmye8b"]
 
 [ext_resource type="PackedScene" uid="uid://8evjkx7qf0nw" path="res://Player/player.tscn" id="1_m5rj2"]
+[ext_resource type="PackedScene" uid="uid://b50k2kppb8mn1" path="res://enemy.tscn" id="3_drf27"]
 [ext_resource type="Texture2D" uid="uid://bu4f3id3ro1as" path="res://1458354030536.jpg" id="3_tes47"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vs1g8"]
 
 [node name="World" type="Node"]
 
@@ -12,3 +15,12 @@ position = Vector2(478, 358)
 z_index = -5
 position = Vector2(540, 351)
 texture = ExtResource("3_tes47")
+
+[node name="Enemy" parent="." instance=ExtResource("3_drf27")]
+position = Vector2(594, 350)
+
+[node name="Area2D2" type="Area2D" parent="Enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D2"]
+scale = Vector2(1.6, 1.6)
+shape = SubResource("CapsuleShape2D_vs1g8")

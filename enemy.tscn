@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b50k2kppb8mn1"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_3fnok"]
+[ext_resource type="Texture2D" uid="uid://cgkp5xjjjrd4e" path="res://mSuitMoss.png" id="1_06qoa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kt1o7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tceys"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_3fnok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_kt1o7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_06qoa")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.6, 1.6)
+shape = SubResource("CapsuleShape2D_tceys")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
