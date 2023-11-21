@@ -12,6 +12,7 @@ script = ExtResource("1_mpxtt")
 shape = SubResource("CapsuleShape2D_v8fya")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1, -1.56829)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xkuso")
