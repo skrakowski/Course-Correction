@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://j4bckuvmye8b"]
+[gd_scene load_steps=6 format=3 uid="uid://j4bckuvmye8b"]
 
 [ext_resource type="PackedScene" uid="uid://8evjkx7qf0nw" path="res://Player/player.tscn" id="1_m5rj2"]
+[ext_resource type="Script" path="res://World/main_world.gd" id="1_xbkw4"]
 [ext_resource type="PackedScene" uid="uid://b50k2kppb8mn1" path="res://enemy.tscn" id="3_drf27"]
 [ext_resource type="Texture2D" uid="uid://bu4f3id3ro1as" path="res://1458354030536.jpg" id="3_tes47"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vs1g8"]
 
 [node name="World" type="Node"]
+script = ExtResource("1_xbkw4")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_m5rj2")]
 position = Vector2(478, 358)
