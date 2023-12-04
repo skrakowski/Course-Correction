@@ -10,6 +10,7 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
+#Creates the Autocannon bullet
 func shoot():
 	var bullet = bulletPath.instantiate()
 	bullet.bVelocity = $Marker2D.global_position - global_position
@@ -21,11 +22,14 @@ func shoot():
 func kill():
 	get_tree().reload_current_scene()
 
+#Laser Gun Functionality
 func _process(_delta):
 	if Input.is_action_just_pressed("laser"):
-		var coll = lasergun.get_collider()
-		if coll.name == "Area2D":
-			get_tree().change_scene_to_file("res://main_menu.tscn")	
+		if lasergun.is_colliding():
+			var target = lasergun.get_collider()
+			if target.is_in_group("enemy"):
+				target.health -= 1
+				
 			
 
 func _physics_process(_delta):
@@ -34,7 +38,7 @@ func _physics_process(_delta):
 		Input.get_axis("ui_left", "ui_right"),
 		Input.get_axis("ui_up", "ui_down")
 	)
-	
+	#Character follows mouse direction
 	var look_vec = get_global_mouse_position() - global_position
 	global_rotation = atan2(look_vec.y, look_vec.x)
 	
