@@ -9,6 +9,25 @@ const bulletPath = preload("res://Interactions/bullet.tscn")
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	if Input.is_action_just_pressed("triblast"):
+		triblast()
+
+#Creates the Triblast bullets
+func triblast():
+	var bullet = bulletPath.instantiate()
+	bullet.bVelocity = $Marker2D.global_position - global_position
+	bullet.global_position = $Marker2D.global_position
+	get_parent().add_child(bullet)
+	
+	var bullet2 = bulletPath.instantiate()
+	bullet2.bVelocity = $Marker2D2.global_position - global_position
+	bullet2.global_position = $Marker2D2.global_position
+	get_parent().add_child(bullet2)
+
+	var bullet3 = bulletPath.instantiate()
+	bullet3.bVelocity = $Marker2D3.global_position - global_position
+	bullet3.global_position = $Marker2D3.global_position
+	get_parent().add_child(bullet3)
 
 #Creates the Autocannon bullet
 func shoot():
