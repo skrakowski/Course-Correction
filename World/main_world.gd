@@ -7,6 +7,7 @@ extends Node
 @onready var pause_menu = $pauseMenu
 var paused = false
 
+#Matches polygon textures/color to the mapped areas
 func _ready():
 	poly_floor.polygon = coll_floor.polygon
 	poly_ceil.polygon = coll_ceil.polygon

@@ -10,13 +10,15 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
-#Creates the Triblast bullets
+#Creates Weapon Variants
 func shoot():
+	#Auto Cannon
 	if fire_type == 1:
 		var bullet = bulletPath.instantiate()
 		bullet.bVelocity = $Marker2D.global_position - global_position
 		bullet.global_position = $Marker2D.global_position
 		get_parent().add_child(bullet)
+	#Triblaster
 	if fire_type == 2:
 		var bullet = bulletPath.instantiate()
 		bullet.bVelocity = $Marker2D.global_position - global_position
@@ -32,6 +34,7 @@ func shoot():
 		bullet3.bVelocity = $Marker2D3.global_position - global_position
 		bullet3.global_position = $Marker2D3.global_position
 		get_parent().add_child(bullet3)
+	#Laser
 	if fire_type == 3:
 		if lasergun.is_colliding():
 			var target = lasergun.get_collider()
