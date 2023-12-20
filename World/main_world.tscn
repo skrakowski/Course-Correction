@@ -14,6 +14,7 @@ script = ExtResource("1_xbkw4")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_m5rj2")]
 position = Vector2(478, 358)
+fire_type = 1
 
 [node name="1458354030536" type="Sprite2D" parent="."]
 z_index = -5
@@ -24,6 +25,7 @@ texture = ExtResource("3_tes47")
 position = Vector2(594, 350)
 
 [node name="Area2D2" type="Area2D" parent="Enemy"]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D2"]
 scale = Vector2(1.6, 1.6)
@@ -31,3 +33,21 @@ shape = SubResource("CapsuleShape2D_vs1g8")
 
 [node name="pauseMenu" parent="." instance=ExtResource("5_ga724")]
 visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Collision_Floor" type="CollisionPolygon2D" parent="StaticBody2D"]
+light_mask = 3
+polygon = PackedVector2Array(-261, 695, -4, 695, 65, 647, 548, 648, 625, 705, 1341, 707, 1340, 801, -259, 802)
+
+[node name="Polygon_Floor" type="Polygon2D" parent="StaticBody2D/Collision_Floor"]
+color = Color(0.0705882, 0.0705882, 0.211765, 1)
+
+[node name="Collision_Ceil" type="CollisionPolygon2D" parent="StaticBody2D"]
+light_mask = 3
+polygon = PackedVector2Array(-259, -96, -259, 64, -259, 696, -257, 64, -6, 64, 129, -7, 479, -6, 561, 55, 760, 57, 1339, 3, 1339, 709, 1346.87, 3.46713, 1348, -98)
+
+[node name="Polygon_Ceil" type="Polygon2D" parent="StaticBody2D/Collision_Ceil"]
+color = Color(0.0705882, 0.0705882, 0.211765, 1)
