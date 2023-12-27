@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-const ACC = 5
-const bulletPath = preload("res://Interactions/bullet.tscn")
 
+const bulletPath = preload("res://Interactions/bullet.tscn")
+@onready var Health = 100
+@onready var ACC = 5
 @onready var lasergun = $RayCast2D
 @export var fire_type = 1
-
+@export var chassis = 2
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
@@ -41,7 +42,15 @@ func shoot():
 			if target.is_in_group("enemy"):
 				target.health -= 1
 
-
+func chassis_mode():
+	#light chassis
+	if chassis == 1:
+		ACC += 3
+		Health = 50
+	#heavy chassis
+	if chassis == 2:
+		ACC -= 3
+		Health = 150
 
 	
 
@@ -66,15 +75,8 @@ func _physics_process(_delta):
 	velocity += direction * ACC
 	
 	
-
-
-
-	
-#func shoot():
-#	var bullet = bulletPath.instantiate()
-#
-#	get_parent().add_child(bullet)
-#	bullet.position = $Marker2D.global_position
-	
 	
 	move_and_slide()
+	
+func _ready():
+	chassis_mode()
