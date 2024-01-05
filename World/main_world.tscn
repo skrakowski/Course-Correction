@@ -1,12 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://j4bckuvmye8b"]
+[gd_scene load_steps=10 format=3 uid="uid://j4bckuvmye8b"]
 
 [ext_resource type="PackedScene" uid="uid://8evjkx7qf0nw" path="res://Player/player.tscn" id="1_m5rj2"]
 [ext_resource type="Script" path="res://World/main_world.gd" id="1_xbkw4"]
 [ext_resource type="PackedScene" uid="uid://b50k2kppb8mn1" path="res://enemy.tscn" id="3_drf27"]
 [ext_resource type="Texture2D" uid="uid://bu4f3id3ro1as" path="res://1458354030536.jpg" id="3_tes47"]
 [ext_resource type="PackedScene" uid="uid://c2xqp3rueml0y" path="res://pause_menu.tscn" id="5_ga724"]
+[ext_resource type="PackedScene" uid="uid://bpoodd1atsbyl" path="res://Interactions/store_screen.tscn" id="6_bi4ix"]
+[ext_resource type="Script" path="res://Interactions/store_screen.gd" id="7_6vvh5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vs1g8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mp7v"]
+size = Vector2(42, 78)
 
 [node name="World" type="Node"]
 process_mode = 1
@@ -14,7 +19,7 @@ script = ExtResource("1_xbkw4")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_m5rj2")]
 position = Vector2(478, 358)
-fire_type = 1
+chassis = 0
 
 [node name="1458354030536" type="Sprite2D" parent="."]
 z_index = -5
@@ -47,7 +52,37 @@ color = Color(0.0705882, 0.0705882, 0.211765, 1)
 
 [node name="Collision_Ceil" type="CollisionPolygon2D" parent="StaticBody2D"]
 light_mask = 3
-polygon = PackedVector2Array(-259, -96, -259, 64, -259, 696, -257, 64, -6, 64, 129, -7, 479, -6, 561, 55, 760, 57, 1339, 3, 1339, 709, 1346.87, 3.46713, 1348, -98)
+polygon = PackedVector2Array(-259, -96, -261, 693, -51, 693, -51, 545, -207, 545, -207, 306, -52, 306, -56, 64)
 
 [node name="Polygon_Ceil" type="Polygon2D" parent="StaticBody2D/Collision_Ceil"]
 color = Color(0.0705882, 0.0705882, 0.211765, 1)
+
+[node name="Store" type="Node2D" parent="."]
+position = Vector2(-202, 496.92)
+
+[node name="Area2D" type="Area2D" parent="Store"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Store/Area2D"]
+position = Vector2(11, 8.07996)
+shape = SubResource("RectangleShape2D_2mp7v")
+
+[node name="storeScreen" parent="." instance=ExtResource("6_bi4ix")]
+offset_left = -488.0
+offset_top = 444.0
+offset_right = -488.0
+offset_bottom = 444.0
+script = ExtResource("7_6vvh5")
+
+[node name="Label" parent="storeScreen" index="0"]
+visible = false
+offset_left = 14.0
+offset_top = -2.0
+offset_right = 969.0
+offset_bottom = 717.0
+
+[connection signal="body_entered" from="Store/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Store/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="storeScreen/Label/autoCannon" to="CharacterBody2D" method="_on_auto_cannon_pressed"]
+[connection signal="pressed" from="storeScreen/Label/triBlast" to="CharacterBody2D" method="_on_tri_blast_pressed"]
+
+[editable path="storeScreen"]

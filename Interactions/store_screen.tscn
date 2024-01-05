@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bpoodd1atsbyl"]
+
+[node name="Store Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 955.0
+offset_bottom = 719.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Label"]
+layout_mode = 2
+offset_left = 295.0
+offset_top = 103.0
+offset_right = 419.0
+offset_bottom = 129.0
+text = "Weapon Select"
+
+[node name="autoCannon" type="Button" parent="Label"]
+layout_mode = 2
+offset_left = 301.0
+offset_top = 136.0
+offset_right = 410.0
+offset_bottom = 168.0
+text = "Auto Cannon"
+
+[node name="triBlast" type="Button" parent="Label"]
+layout_mode = 2
+offset_left = 320.0
+offset_top = 176.0
+offset_right = 392.0
+offset_bottom = 208.0
+text = "TriBlast"
+
+[node name="laser" type="Button" parent="Label"]
+layout_mode = 2
+offset_left = 320.0
+offset_top = 216.0
+offset_right = 392.0
+offset_bottom = 248.0
+text = "Laser"

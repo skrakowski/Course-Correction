@@ -5,9 +5,10 @@ const bulletPath = preload("res://Interactions/bullet.tscn")
 @onready var Health = 100
 @onready var ACC = 5
 @onready var lasergun = $RayCast2D
-@export var fire_type = 1
 @export var chassis = 2
-func _unhandled_input(event):
+@export var fire_type = 1
+
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
@@ -57,10 +58,14 @@ func chassis_mode():
 func kill():
 	get_tree().reload_current_scene()
 
-#Laser Gun Functionality
 
-				
-			
+func _on_auto_cannon_pressed():
+	fire_type = 1
+
+
+func _on_tri_blast_pressed():
+	fire_type = 2
+
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/acceleration.
@@ -80,3 +85,6 @@ func _physics_process(_delta):
 	
 func _ready():
 	chassis_mode()
+
+
+

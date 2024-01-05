@@ -7,7 +7,6 @@
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_mpxtt")
-fire_type = 3
 chassis = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

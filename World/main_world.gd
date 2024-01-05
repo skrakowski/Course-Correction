@@ -5,6 +5,7 @@ extends Node
 @onready var coll_floor = $StaticBody2D/Collision_Floor
 @onready var poly_floor = $StaticBody2D/Collision_Floor/Polygon_Floor
 @onready var pause_menu = $pauseMenu
+
 var paused = false
 
 #Matches polygon textures/color to the mapped areas
@@ -26,3 +27,11 @@ func pauseGame():
 		Engine.time_scale = 0
 	
 	paused = !paused 
+
+
+func _on_area_2d_body_entered(_body):
+	$storeScreen/Label.show()
+
+
+func _on_area_2d_body_exited(_body):
+	$storeScreen/Label.hide()
