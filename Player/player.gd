@@ -5,7 +5,7 @@ const bulletPath = preload("res://Interactions/bullet.tscn")
 @onready var Health = 100
 @onready var ACC = 5
 @onready var lasergun = $RayCast2D
-@export var chassis = 2
+@export var chassis = 1
 @export var fire_type = 1
 
 func _unhandled_input(_event):
@@ -21,7 +21,7 @@ func shoot():
 		bullet.global_position = $Marker2D.global_position
 		get_parent().add_child(bullet)
 	#Triblaster
-	if fire_type == 2:
+	elif fire_type == 2:
 		var bullet = bulletPath.instantiate()
 		bullet.bVelocity = $Marker2D.global_position - global_position
 		bullet.global_position = $Marker2D.global_position
@@ -37,27 +37,37 @@ func shoot():
 		bullet3.global_position = $Marker2D3.global_position
 		get_parent().add_child(bullet3)
 	#Laser
-	if fire_type == 3:
+	elif fire_type == 3:
 		if lasergun.is_colliding():
 			var target = lasergun.get_collider()
 			if target.is_in_group("enemy"):
 				target.health -= 1
 
+#Creates Chassis Variants
 func chassis_mode():
 	#light chassis
-	if chassis == 1:
-		ACC += 3
+	if chassis == 2:
+		ACC = 8
 		Health = 50
 	#heavy chassis
-	if chassis == 2:
-		ACC -= 3
+	elif chassis == 3:
+		ACC = 2
 		Health = 150
-
+	else:
+		ACC = 5
+		Health = 100
 	
 
 func kill():
 	get_tree().reload_current_scene()
 
+#Button control for chassis mode
+func _on_light_c_pressed():
+	chassis = 2
+	$ColorRect.color = Color(1,0,0,1)
+func _on_heavy_c_pressed():
+	chassis = 3
+	$ColorRect.color = Color(0.184314,0.309804,0.309804,1)
 
 func _on_auto_cannon_pressed():
 	fire_type = 1
@@ -68,6 +78,7 @@ func _on_tri_blast_pressed():
 
 
 func _physics_process(_delta):
+	chassis_mode()
 	# Get the input direction and handle the movement/acceleration.
 	var direction = Vector2(
 		Input.get_axis("ui_left", "ui_right"),
@@ -83,8 +94,5 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 	
-func _ready():
-	chassis_mode()
-
-
+	
 

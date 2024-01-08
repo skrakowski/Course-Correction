@@ -9,39 +9,62 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 955.0
 offset_bottom = 719.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Label"]
 layout_mode = 2
-offset_left = 295.0
-offset_top = 103.0
-offset_right = 419.0
-offset_bottom = 129.0
+offset_left = 252.0
+offset_top = 110.0
+offset_right = 390.0
+offset_bottom = 133.0
 text = "Weapon Select"
 
 [node name="autoCannon" type="Button" parent="Label"]
 layout_mode = 2
-offset_left = 301.0
-offset_top = 136.0
-offset_right = 410.0
+offset_left = 256.0
+offset_top = 137.0
+offset_right = 365.0
 offset_bottom = 168.0
 text = "Auto Cannon"
 
 [node name="triBlast" type="Button" parent="Label"]
 layout_mode = 2
-offset_left = 320.0
-offset_top = 176.0
-offset_right = 392.0
-offset_bottom = 208.0
+offset_left = 274.0
+offset_top = 172.0
+offset_right = 346.0
+offset_bottom = 203.0
 text = "TriBlast"
 
 [node name="laser" type="Button" parent="Label"]
 layout_mode = 2
-offset_left = 320.0
-offset_top = 216.0
-offset_right = 392.0
-offset_bottom = 248.0
+offset_left = 273.0
+offset_top = 207.0
+offset_right = 345.0
+offset_bottom = 238.0
 text = "Laser"
+
+[node name="lightC" type="Button" parent="Label"]
+layout_mode = 2
+offset_left = 401.0
+offset_top = 140.0
+offset_right = 484.0
+offset_bottom = 172.0
+text = "Light"
+
+[node name="heavyC" type="Button" parent="Label"]
+layout_mode = 2
+offset_left = 401.0
+offset_top = 176.0
+offset_right = 484.0
+offset_bottom = 207.0
+text = "Heavy"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Label"]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 113.0
+offset_right = 517.0
+offset_bottom = 144.0
+text = "Chassis Select"

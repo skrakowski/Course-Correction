@@ -23,7 +23,7 @@ chassis = 0
 
 [node name="1458354030536" type="Sprite2D" parent="."]
 z_index = -5
-position = Vector2(540, 351)
+position = Vector2(538, 351)
 texture = ExtResource("3_tes47")
 
 [node name="Enemy" parent="." instance=ExtResource("3_drf27")]
@@ -51,8 +51,10 @@ polygon = PackedVector2Array(-261, 695, -4, 695, 65, 647, 548, 648, 625, 705, 13
 color = Color(0.0705882, 0.0705882, 0.211765, 1)
 
 [node name="Collision_Ceil" type="CollisionPolygon2D" parent="StaticBody2D"]
+top_level = true
 light_mask = 3
-polygon = PackedVector2Array(-259, -96, -261, 693, -51, 693, -51, 545, -207, 545, -207, 306, -52, 306, -56, 64)
+visibility_layer = 3
+polygon = PackedVector2Array(-259, -96, -261, 693, 54, 693, 54, 545, -258, 545, -207, 306, -52, 306, -56, 64)
 
 [node name="Polygon_Ceil" type="Polygon2D" parent="StaticBody2D/Collision_Ceil"]
 color = Color(0.0705882, 0.0705882, 0.211765, 1)
@@ -63,26 +65,35 @@ position = Vector2(-202, 496.92)
 [node name="Area2D" type="Area2D" parent="Store"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Store/Area2D"]
-position = Vector2(11, 8.07996)
+position = Vector2(-31, 7.07999)
 shape = SubResource("RectangleShape2D_2mp7v")
 
 [node name="storeScreen" parent="." instance=ExtResource("6_bi4ix")]
-offset_left = -488.0
-offset_top = 444.0
-offset_right = -488.0
-offset_bottom = 444.0
+offset_left = -494.0
+offset_top = 557.0
+offset_right = -881.0
+offset_bottom = 26.0
 script = ExtResource("7_6vvh5")
 
 [node name="Label" parent="storeScreen" index="0"]
-visible = false
-offset_left = 14.0
-offset_top = -2.0
-offset_right = 969.0
-offset_bottom = 717.0
+offset_left = 19.0
+offset_top = -122.0
+offset_right = 553.0
+offset_bottom = 212.0
+
+[node name="lightC" parent="storeScreen/Label" index="4"]
+offset_left = 402.0
+offset_right = 485.0
+
+[node name="heavyC" parent="storeScreen/Label" index="5"]
+offset_top = 175.0
+offset_bottom = 206.0
 
 [connection signal="body_entered" from="Store/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Store/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="storeScreen/Label/autoCannon" to="CharacterBody2D" method="_on_auto_cannon_pressed"]
 [connection signal="pressed" from="storeScreen/Label/triBlast" to="CharacterBody2D" method="_on_tri_blast_pressed"]
+[connection signal="pressed" from="storeScreen/Label/lightC" to="CharacterBody2D" method="_on_light_c_pressed"]
+[connection signal="pressed" from="storeScreen/Label/heavyC" to="CharacterBody2D" method="_on_heavy_c_pressed"]
 
 [editable path="storeScreen"]
