@@ -61,24 +61,22 @@ func chassis_mode():
 func kill():
 	get_tree().reload_current_scene()
 
-#Button control for chassis mode
+#Button control for chassis mode and fire select
 func _on_light_c_pressed():
 	chassis = 2
+	chassis_mode()
 	$ColorRect.color = Color(1,0,0,1)
 func _on_heavy_c_pressed():
 	chassis = 3
+	chassis_mode()
 	$ColorRect.color = Color(0.184314,0.309804,0.309804,1)
-
 func _on_auto_cannon_pressed():
 	fire_type = 1
-
-
 func _on_tri_blast_pressed():
 	fire_type = 2
 
 
 func _physics_process(_delta):
-	chassis_mode()
 	# Get the input direction and handle the movement/acceleration.
 	var direction = Vector2(
 		Input.get_axis("ui_left", "ui_right"),
@@ -93,6 +91,5 @@ func _physics_process(_delta):
 	
 	
 	move_and_slide()
-	
 	
 
