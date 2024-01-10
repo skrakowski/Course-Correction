@@ -2,9 +2,14 @@ extends CharacterBody2D
 
 
 const bulletPath = preload("res://Interactions/bullet.tscn")
-@onready var Health = 100
+
+signal healthChanged
+
+@onready var currentHealth = 100
+@onready var maxHealth = 100
 @onready var ACC = 5
 @onready var lasergun = $RayCast2D
+@onready var healthBar = $"../CanvasLayer/ProgressBar"
 @export var chassis = 1
 @export var fire_type = 1
 
@@ -48,14 +53,23 @@ func chassis_mode():
 	#light chassis
 	if chassis == 2:
 		ACC = 8
-		Health = 50
+		maxHealth = 50
+		healthBar.max_value = 50
+		healthBar.value = 50
+		healthBar.size.x = 100
+		healthChanged.emit()
 	#heavy chassis
 	elif chassis == 3:
 		ACC = 2
-		Health = 150
+		maxHealth = 150
+		healthBar.max_value = 150
+		healthBar.value = 150
+		healthBar.size.x = 180
+		currentHealth = 150
+		healthChanged.emit()
 	else:
 		ACC = 5
-		Health = 100
+		maxHealth = 100
 	
 
 func kill():

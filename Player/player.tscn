@@ -11,9 +11,6 @@ script = ExtResource("1_mpxtt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_v8fya")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(1, -1.56829)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xkuso")
 
@@ -33,6 +30,7 @@ position = Vector2(20, -8)
 rotation = 0.167552
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(4, 0)
 target_position = Vector2(2000, 0)
 collide_with_areas = true
 

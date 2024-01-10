@@ -4,7 +4,7 @@ extends Node
 @onready var poly_ceil = $StaticBody2D/Collision_Ceil/Polygon_Ceil
 @onready var coll_floor = $StaticBody2D/Collision_Floor
 @onready var poly_floor = $StaticBody2D/Collision_Floor/Polygon_Floor
-@onready var pause_menu = $pauseMenu
+@onready var pause_menu = $CharacterBody2D/pauseMenu
 
 var paused = false
 
