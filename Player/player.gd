@@ -5,6 +5,7 @@ const bulletPath = preload("res://Interactions/bullet.tscn")
 
 signal healthChanged
 
+@onready var animationPlayer = $Sprite2D
 @onready var currentHealth = 100
 @onready var maxHealth = 100
 @onready var ACC = 5
@@ -89,6 +90,9 @@ func _on_auto_cannon_pressed():
 func _on_tri_blast_pressed():
 	fire_type = 2
 
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_right"):
+			animationPlayer.play("move")
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/acceleration.

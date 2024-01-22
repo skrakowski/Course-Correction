@@ -1,13 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://b50k2kppb8mn1"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_3fnok"]
-[ext_resource type="Texture2D" uid="uid://cgkp5xjjjrd4e" path="res://mSuitMoss.png" id="1_06qoa"]
+[ext_resource type="Texture2D" uid="uid://bcsfs5q8vroc1" path="res://Assets/mechabaddie01.png" id="2_py2nu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kt1o7"]
-radius = 12.0
-height = 41.3333
+radius = 14.6667
+height = 52.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tceys"]
+radius = 13.125
+height = 48.75
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 3
@@ -15,6 +17,7 @@ collision_mask = 3
 script = ExtResource("1_3fnok")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(0, -5)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CapsuleShape2D_kt1o7")
 
@@ -24,11 +27,13 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
+position = Vector2(0, -4)
 scale = Vector2(1.6, 1.6)
 shape = SubResource("CapsuleShape2D_tceys")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4)
-texture = ExtResource("1_06qoa")
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(1.42969, 1.57812)
+texture = ExtResource("2_py2nu")
 
 [connection signal="body_entered" from="CollisionShape2D/Area2D" to="." method="_on_area_2d_body_entered"]
